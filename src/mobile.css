@@ -74,12 +74,12 @@
     }
     .right-img{
         transform: rotate(90deg);
-        padding: 0 12px;
+        padding: 0 8px;
     }
     
     .left-img{
         transform: rotate(270deg);
-        padding: 0 12px;
+        padding: 0 8px;
     }
 
 
