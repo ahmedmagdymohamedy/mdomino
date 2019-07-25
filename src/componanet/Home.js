@@ -7,7 +7,7 @@ import * as INT from './Intelligence'
 
 
 const Home = () => {
-    
+
     const emptycards = require('../dominos.json').emptyDominos
 
 
@@ -21,6 +21,7 @@ const Home = () => {
     const [startGame, setStartGame] = useState(false)
     const [tern, setTern] = useState(-1);
     const [edjsNumber, setEdjsNumber] = useState([-1, -1])
+
 
 
 
@@ -93,10 +94,12 @@ const Home = () => {
         if (INT.isNotUsed(card.id)) {
             setCartToPlayer(0, card.id)
 
+
+
             if (selectionCardesNumber !== 7) {
                 setSelectionCardesNumber(selectionCardesNumber + 1)
             }
-            if (selectionCardesNumber === 7) {
+            if (selectionCardesNumber >= 7) {
                 setPlayer1Cards([...emptycards])
                 setPlayer2Cards([...emptycards])
                 setPlayer3Cards([...emptycards])
@@ -123,7 +126,7 @@ const Home = () => {
     const onClickNext = (playerID, card) => {
         const done = () => {
             setGraoundNumbers(INT.getCartByID(card.id), card)
-            INT.playerPlay(playerID , card , edjsNumber)
+            INT.playerPlay(playerID, card, edjsNumber)
             INT.setPlayer0NotHaveCards(player0Cards)
             moveTern(playerID)
         }
@@ -142,7 +145,7 @@ const Home = () => {
 
 
     const onClickSkip = (playerID) => {
-        INT.playerSkip(playerID ,edjsNumber)
+        INT.playerSkip(playerID, edjsNumber)
         moveTern(playerID)
     }
 
@@ -158,10 +161,10 @@ const Home = () => {
 
             <div className="game">
                 <GroundCards theCards={graoundCards} />
-                <PlayerOption playerName="player 2 (my Friend) " tern={tern} playerID={2} cards={player2Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} graoundCards={graoundCards}/>
-                <PlayerOption playerName="Me " tern={tern} playerID={0} cards={player0Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} />
-                <PlayerOption playerName="player 1 " tern={tern} playerID={1} cards={player1Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} />
-                <PlayerOption playerName="player 3" tern={tern} playerID={3} cards={player3Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} />
+                <PlayerOption playerName="player 2 (my Friend) " tern={tern} playerID={2} cards={player2Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} graoundCards={graoundCards} />
+                <PlayerOption playerName="Me " tern={tern} playerID={0} cards={player0Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} graoundCards={graoundCards}/>
+                <PlayerOption playerName="player 1 " tern={tern} playerID={1} cards={player1Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} graoundCards={graoundCards}/>
+                <PlayerOption playerName="player 3" tern={tern} playerID={3} cards={player3Cards} onClickNext={onClickNext} onClickSkip={onClickSkip} onStart={startGame} edjsNumber={edjsNumber} graoundCards={graoundCards}/>
             </div>
             {!startGame ?
                 <ChoseCardsDialog titel="select 7 cards you have " handelNext={handelSubmitNext} handelClose={handelCloseStartCardsChoose} edjsNumber={edjsNumber} playerID={0} />
