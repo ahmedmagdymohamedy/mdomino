@@ -307,7 +307,7 @@ export const playerPlay = (playerID, card, edjesNumbers) => {
 
 
         if (playersOdds[playerID].makeDouble[card.first] >= 1 && card.first !== card.second) {
-            playersOdds[playerID].notHave[theEdjsWithSort[1]] = 1
+            playersOdds[playerID].onPlay[theEdjsWithSort[1]] += 2
         }
 
 
