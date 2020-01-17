@@ -1,5 +1,10 @@
 
-const allDominos = require('../dominos.json').dominos
+export let allDominos = require('../dominos.json').dominos
+
+
+export const setAllDominos=(newAllDominos)=>{
+    allDominos = newAllDominos
+}
 
 
 export const getCardID = (firstNum, secondNum) => {
@@ -91,7 +96,7 @@ export const haveBuff = (cards) => {
 
 
 
-let playersOdds = [
+export let playersOdds = [
 
     {
         cardCount: 7,
@@ -132,6 +137,10 @@ let playersOdds = [
 
     }
 ]
+
+export const setPlayerOdds = (newPlayerOdds) => {
+    playersOdds = newPlayerOdds
+}
 
 
 export const getRatio = (cardID, cards, edjesNumbers, graoundCards) => {
@@ -307,7 +316,7 @@ export const playerPlay = (playerID, card, edjesNumbers) => {
 
 
         if (playersOdds[playerID].makeDouble[card.first] >= 1 && card.first !== card.second) {
-            playersOdds[playerID].notHave[theEdjsWithSort[1]] = 1
+            playersOdds[playerID].onPlay[theEdjsWithSort[1]] += 2
         }
 
 
